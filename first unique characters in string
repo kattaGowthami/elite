@@ -1,0 +1,7 @@
+def firstUniqChar(self, s: str) -> int:
+        for i in range(0,len(s)):
+           n = s.count(s[i])
+           if(n==1):
+               return i
+        else:
+           return -1
