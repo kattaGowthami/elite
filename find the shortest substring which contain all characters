@@ -1,0 +1,18 @@
+l =['a','a','b','b','b','c','c','f']
+d = set(l)
+d = list(d)
+a=[]
+for i in range(0,len(l)+1):
+    for j in range(i+1,len(l)+1):
+        s = l[i:j]
+        if (len(s)>= len(d)):
+            for t in d :
+                 if t not in s:
+                     break
+            else:
+                a.append(s)
+for i in a:
+    min = len(l)
+    if(len(i)<min):
+        s = i
+print(s)
