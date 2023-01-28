@@ -1,0 +1,17 @@
+class Solution {
+    public boolean isUnivalTree(TreeNode root) {
+         return same(root,root.val);
+    }
+    public boolean same(TreeNode root ,int s)
+    {
+        if(root==null)
+           return true;
+        if(root.val != s)
+           return false;
+        boolean l = same(root.left,s);
+        boolean r = same(root.right,s);
+        if(l==true && r == true)
+           return true;
+        return false;
+    }
+}
