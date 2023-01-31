@@ -1,0 +1,23 @@
+class Solution {
+    List<Integer> l = new ArrayList<>();
+    public boolean findTarget(TreeNode root, int k) {
+        inorder(root);
+         return target(l,k);
+    }
+    public void inorder(TreeNode root){
+        if(root==null)
+           return;
+        inorder(root.left);
+        l.add(root.val);
+        inorder(root.right);
+    }
+    public boolean target(List<Integer> l,int target){
+        int n = l.size();
+        for(int i=0;i<n-1;i++)
+           for(int j=i+1;j<n;j++)
+             if(l.get(i)+l.get(j) == target)
+                 return true;
+        return false;
+    }
+   
+}
