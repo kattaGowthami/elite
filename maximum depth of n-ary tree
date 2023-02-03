@@ -1,0 +1,23 @@
+class Solution {
+    public int maxDepth(Node root) {
+       if(root==null)
+          return 0;
+       Queue<Node> queue = new LinkedList<>();
+       queue.add(root);
+       int level=0;
+       while(!queue.isEmpty()){
+           int n = queue.size();
+           for(int i=0;i<n;i++){
+            Node curr = queue.poll();
+            for(Node n1: curr.children)
+                     queue.offer(n1);
+
+            
+           }
+           level = level+1;
+       }
+       return level;
+        
+        
+    }
+}
