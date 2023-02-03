@@ -1,0 +1,46 @@
+class Solution {
+    List<List<Integer>>ans=new LinkedList<>();
+    List<Integer> r = new ArrayList<>();
+    List<Double> d = new ArrayList<>();
+    double s=0;
+    public List<Double> averageOfLevels(TreeNode root) {
+        ans = levelOrder(root);
+        for(int i=0;i<ans.size();i++){
+            s=0;
+            r = ans.get(i);
+            for(int j=0;j<r.size();j++){
+                s = s+r.get(j);
+            }
+            d.add(s/r.size());
+        }
+        return d;
+
+    }
+    public List<List<Integer>> levelOrder(TreeNode root) {
+
+        if(root==null){
+            return ans;
+        }
+        
+        Queue<TreeNode>n=new LinkedList<>();
+        n.add(root);
+        while(!n.isEmpty()){
+            List<Integer>l=new ArrayList<>();
+            int count=n.size();
+            for(int i=0;i<count;i++){
+                TreeNode cur=n.poll();
+                l.add(cur.val);
+                if(cur.left!=null){
+                    n.add(cur.left);
+                }
+                if(cur.right!=null){
+                    n.add(cur.right);
+                }
+                
+            }
+            
+            ans.add(l);
+        }
+        return ans;
+    }
+}
