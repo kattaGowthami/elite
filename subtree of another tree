@@ -1,0 +1,17 @@
+class Solution {
+    public boolean isSubtree(TreeNode root, TreeNode subRoot) {
+      if(root==null||subRoot==null)
+        return false;
+      if(root.val == subRoot.val && search(root,subRoot))
+         return true;
+      return isSubtree(root.left,subRoot)|| isSubtree(root.right,subRoot);
+
+    }
+    public boolean search (TreeNode root,TreeNode sub){
+        if(root==null && sub==null)
+           return true;
+        if(root==null||sub==null||root.val!=sub.val)
+        return false;
+        return search(root.left,sub.left) && search(root.right,sub.right);
+    }
+}
