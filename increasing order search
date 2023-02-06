@@ -1,0 +1,23 @@
+class Solution {
+    List<Integer>l1 = new ArrayList<>();
+    public TreeNode increasingBST(TreeNode root) {
+        inorder(root);
+        int n = l1.size();
+        TreeNode curr = new TreeNode(l1.get(0));
+        TreeNode cu = curr;
+        for(int i=1;i<n;i++){
+            curr.left = null;
+            curr.right = new TreeNode(l1.get(i));
+            curr = curr.right;
+        }
+        return cu;
+        
+    }
+    public void inorder(TreeNode root){
+        if(root==null)
+           return;
+        inorder(root.left);
+        l1.add(root.val);
+        inorder(root.right);
+    }
+}
